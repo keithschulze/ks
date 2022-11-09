@@ -4,7 +4,7 @@ template = "about.html"
 date = 2021-01-05
 
 [extra]
-author = "Jane Doe"
+author = "Keith Schulze"
 
 [taxonomies]
 tags = ["about"]

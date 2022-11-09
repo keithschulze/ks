@@ -25,9 +25,9 @@ highlight_code = true
 [extra]
 # Put all your custom variables here
 links = [
-    { name = "about", url = "$BASE_URL/pages/about" },
-    { name = "tags", url = "$BASE_URL/tags" },
+    { name = "about", url = "$BASE_URL/pages/about/" },
+    { name = "tags", url = "$BASE_URL/tags/" },
     { name = "github", url = "https://github.com/keithschulze" },
-    { name = "twitter", url = "https://twitter.com/keithschulze" },
     { name = "linkedin", url = "https://www.linkedin.com/in/keithschulze" },
+    { name = "mastodon", url = "https://mastodon.nz/web/@keithschulze#" },
 ]

@@ -1,0 +1,31 @@
+name: keithschulze.com infra deploy
+on:
+  push
+env:
+  APP_NAME: "keithschulze"
+  DEPLOY_ENV: "dev"
+  AWS_REGION: "ap-southeast-2"
+# permission can be added at job level or workflow level
+permissions:
+      id-token: write
+      contents: read    # This is required for actions/checkout@v2
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v2
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::801592206232:role/ks-shared-dev-ga-ks
+          role-session-name: deploy-ks
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v15
+      - name: Deploy infra
+        run: nix-shell --run "deploy/scripts/deploy.sh"
+      - name: Build blog
+        run: nix build
+      - name: Upload content
+        run: nix-shell --run "deploy/scripts/upload.sh"
