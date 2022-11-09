@@ -14,4 +14,5 @@ bucketName=$(terraform output -json | jq -r '.bucket_name.value')
 
 popd
 
+echo "Syncing content to ${bucketName}..."
 aws s3 sync result "s3://${bucketName}"
