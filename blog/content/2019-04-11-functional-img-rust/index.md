@@ -31,7 +31,8 @@ chapter using Rust.
 
 Note: You can launch and play with an interactive version of the code for this
 blog post on [binder](https://mybinder.org/):
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/keithschulze/keithschulze/master?filepath=notebooks%2F2019-04-11-functional-img-rust-part1.ipynb)
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/keithschulze/ks/HEAD?labpath=notebooks%2F%072019-04-11-functional-img-rust-part1.ipynb)
 
 # What is an image?
 
