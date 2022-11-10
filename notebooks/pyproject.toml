@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "notebooks"
+version = "0.1.0"
+description = "Notebooks for my blog"
+authors = ["Keith Schulze <keith.schulze@hey.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupyterlab = "^3.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
