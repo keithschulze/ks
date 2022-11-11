@@ -95,7 +95,11 @@
                 {% endif %}
                 <ul class="menu">
                     {% block sidebar_nav %}{% for link in config.extra.links %}
+                    {% if link.name == "mastodon" %}
+                    <li><a rel="me" href="{{ link.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">{{ link.name }}</a></li>
+                    {% else %}
                     <li><a href="{{ link.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">{{ link.name }}</a></li>
+                    {% endif %}
                     {% endfor %}{% endblock sidebar_nav %}
                 </ul>
             </nav>

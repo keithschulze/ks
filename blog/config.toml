@@ -29,5 +29,5 @@ links = [
     { name = "tags", url = "$BASE_URL/tags/" },
     { name = "github", url = "https://github.com/keithschulze" },
     { name = "linkedin", url = "https://www.linkedin.com/in/keithschulze" },
-    { name = "mastodon", url = "https://mastodon.nz/web/@keithschulze#" },
+    { name = "mastodon", url = "https://mastodon.nz/@keithschulze" },
 ]
