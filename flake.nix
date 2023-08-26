@@ -44,6 +44,7 @@
             awscli2
             terraform
             jq
+            zola
 
             # keep this line if you use bash
             bashInteractive
