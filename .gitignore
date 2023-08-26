@@ -110,3 +110,4 @@ terraform.rc
 ### Miscellaneous
 result
 .DS_Store
+pretty-urls/*.zip
