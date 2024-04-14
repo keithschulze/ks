@@ -69,7 +69,7 @@ resource "aws_lambda_function" "pretty_url_lambda" {
 
   source_code_hash = data.archive_file.pretty_url_lambda_code.output_base64sha256
 
-  runtime = "nodejs18.x"
+  runtime = "nodejs20.x"
 
   publish  = true
 
