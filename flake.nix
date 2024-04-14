@@ -30,19 +30,26 @@
         tfWorkspacePrefix = "workspaces";
 
         tfCommon = (
-          pkgs.writeScriptBin "terraform_common.sh" (
-            builtins.readFile ./deploy/scripts/shared/terraform.sh
+          pkgs.writeScriptBin "tofu_common.sh" (
+            builtins.readFile ./deploy/scripts/shared/tofu.sh
           )
         ).overrideAttrs(old: {
           buildCommand = "${old.buildCommand}\n patchShebangs $out";
         });
+
+        tofu-init = pkgs.writeScriptBin "tofu-init" ''
+          #!${pkgs.bash}/bin/bash
+          source "${tfCommon}/bin/tofu_common.sh"
+          init_tofu
+        '';
       in {
         defaultPackage = pkgs.blog;
 
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             awscli2
-            terraform
+            opentofu
+            tofu-init
             jq
             zola
 
@@ -51,7 +58,7 @@
           ];
 
           shellHook = ''
-            source "${tfCommon}/bin/terraform_common.sh"
+            source "${tfCommon}/bin/tofu_common.sh"
             export AWS_REGION=${awsRegion}
             export AWS_DEFAULT_REGION=${awsRegion}
             export APP_NAME=${appName}

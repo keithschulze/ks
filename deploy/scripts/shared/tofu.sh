@@ -14,8 +14,8 @@ fn_get_tf_state_lock_table() (
     --query Parameter.Value
 )
 
-init_terraform() (
-  terraform init \
+init_tofu() (
+  tofu init \
     ${TF_RECONFIGURE:+-reconfigure} \
     ${TF_UPGRADE:+-upgrade} \
     -backend-config="region=$AWS_REGION" \
