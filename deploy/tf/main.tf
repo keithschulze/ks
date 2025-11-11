@@ -44,7 +44,7 @@ resource "aws_s3_bucket_policy" "ks_bucket_cf_access" {
 }
 
 resource "aws_iam_role" "lambda_edge_exec" {
-  name = "${local.name_prefix}-pretty-url"
+  name               = "${local.name_prefix}-pretty-url"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -69,9 +69,9 @@ resource "aws_lambda_function" "pretty_url_lambda" {
 
   source_code_hash = data.archive_file.pretty_url_lambda_code.output_base64sha256
 
-  runtime = "nodejs20.x"
+  runtime = "nodejs22.x"
 
-  publish  = true
+  publish = true
 
   provider = aws.us-east-1
 }
@@ -112,7 +112,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
 
     lambda_function_association {
       event_type = "origin-request"
-      lambda_arn = "${aws_lambda_function.pretty_url_lambda.qualified_arn}"
+      lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
     viewer_protocol_policy = "allow-all"
@@ -139,7 +139,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
 
     lambda_function_association {
       event_type = "origin-request"
-      lambda_arn = "${aws_lambda_function.pretty_url_lambda.qualified_arn}"
+      lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
     min_ttl                = 0
@@ -166,7 +166,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
 
     lambda_function_association {
       event_type = "origin-request"
-      lambda_arn = "${aws_lambda_function.pretty_url_lambda.qualified_arn}"
+      lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
     min_ttl                = 0
