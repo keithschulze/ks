@@ -29,19 +29,9 @@
         tfStateLockSSMPath = "/ks-shared/tf/dynamodb-state-lock-table";
         tfWorkspacePrefix = "workspaces";
 
-        tfCommon = (
-          pkgs.writeScriptBin "tofu_common.sh" (
-            builtins.readFile ./deploy/scripts/shared/tofu.sh
-          )
-        ).overrideAttrs(old: {
+        tofuInit = (pkgs.writeScriptBin "tofu-init" (builtins.readFile ./deploy/scripts/tofu.sh)).overrideAttrs (old: {
           buildCommand = "${old.buildCommand}\n patchShebangs $out";
         });
-
-        tofu-init = pkgs.writeScriptBin "tofu-init" ''
-          #!${pkgs.bash}/bin/bash
-          source "${tfCommon}/bin/tofu_common.sh"
-          init_tofu
-        '';
       in {
         defaultPackage = pkgs.blog;
 
@@ -49,7 +39,7 @@
           buildInputs = with pkgs; [
             awscli2
             opentofu
-            tofu-init
+            tofuInit
             jq
             zola
 
@@ -57,21 +47,16 @@
             bashInteractive
           ];
 
-          shellHook = ''
-            source "${tfCommon}/bin/tofu_common.sh"
-            export AWS_REGION=${awsRegion}
-            export AWS_DEFAULT_REGION=${awsRegion}
-            export APP_NAME=${appName}
-            export DEPLOY_ENV=${deployEnv}
-            export OUTPUT_DIR=$out
-            export TF_STATE_BUCKET_SSM_PATH=${tfStateBucketSSMPath}
-            export TF_STATE_LOCK_TABLE_SSM_PATH=${tfStateLockSSMPath}
-            export TF_WORKSPACE_KEY_PREFIX=${tfWorkspacePrefix}
-            export TF_VAR_app_name=${appName}
-            export TF_VAR_deploy_env=${deployEnv}
-            export TF_VAR_region=${awsRegion}
-            export TF_VAR_tf_state_bucket_name=$(fn_get_tf_state_bucket)
-          '';
+          AWS_REGION = awsRegion;
+          AWS_DEFAULT_REGION = awsRegion;
+          APP_NAME = appName;
+          DEPLOY_ENV = deployEnv;
+          TF_STATE_BUCKET_SSM_PATH = tfStateBucketSSMPath;
+          TF_STATE_LOCK_TABLE_SSM_PATH = tfStateLockSSMPath;
+          TF_WORKSPACE_KEY_PREFIX = tfWorkspacePrefix;
+          TF_VAR_app_name = appName;
+          TF_VAR_deploy_env = deployEnv;
+          TF_VAR_region = awsRegion;
         };
       });
 }

@@ -4,11 +4,11 @@ set -euo pipefail
 
 script_dir=$(dirname "$0")
 
-source "$script_dir/shared/tofu.sh"
+source "$script_dir/tofu.sh"
 
 pushd "$script_dir/../tf"
 
-init_tofu
+tofu_init
 
 bucketName=$(tofu output -json | jq -r '.bucket_name.value')
 

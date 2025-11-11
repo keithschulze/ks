@@ -11,10 +11,10 @@ permissions:
       contents: read    # This is required for actions/checkout@v2
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-slim
     steps:
       - name: Git clone the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -22,7 +22,7 @@ jobs:
           role-session-name: deploy-ks
           aws-region: ${{ env.AWS_REGION }}
       - name: Setup Nix
-        uses: cachix/install-nix-action@v22
+        uses: cachix/install-nix-action@v31
       - name: Deploy infra
         run: nix develop --command "deploy/scripts/deploy.sh"
       - name: Build blog
