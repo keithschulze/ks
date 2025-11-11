@@ -1,5 +1,9 @@
 version: 2
 updates:
+  - package-ecosystem: "uv"
+    directory: "notebooks"
+    schedule:
+      interval: "weekly"
   - package-ecosystem: "terraform"
     directory: "deploy/tf/"
     schedule:
