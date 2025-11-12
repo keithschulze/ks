@@ -14,26 +14,8 @@ permissions:
   contents: read    # This is required for actions/checkout@v2
 
 jobs:
-  plan:
-    runs-on: ubuntu-slim
-    if: github.ref != 'refs/heads/main'
-    steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v5
-      - name: Configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v3
-        with:
-          role-to-assume: arn:aws:iam::801592206232:role/ks-shared-dev-ga-ks
-          role-session-name: deploy-ks
-          aws-region: ${{ env.AWS_REGION }}
-      - name: Setup Nix
-        uses: cachix/install-nix-action@v31
-      - name: Deploy infra
-        run: nix develop --command "deploy/scripts/plan.sh"
-  
   deploy:
     runs-on: ubuntu-slim
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v5
@@ -45,9 +27,15 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - name: Setup Nix
         uses: cachix/install-nix-action@v31
+      - name: Plan infra
+        if: github.ref_main != 'main'
+        run: nix develop --command "deploy/scripts/plan.sh"
       - name: Deploy infra
+        if: github.ref_name == 'main'
         run: nix develop --command "deploy/scripts/deploy.sh"
       - name: Build blog
+        if: github.ref_name == 'main'
         run: nix build
       - name: Upload content
+        if: github.ref_name == 'main'
         run: nix develop --command "deploy/scripts/upload.sh"
