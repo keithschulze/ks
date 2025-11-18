@@ -1,10 +1,11 @@
 version: 2
+enable-beta-ecosystems: true
 updates:
   - package-ecosystem: "uv"
     directory: "notebooks"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "terraform"
+  - package-ecosystem: "opentofu"
     directory: "deploy/tf/"
     schedule:
       interval: "weekly"
