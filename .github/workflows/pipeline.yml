@@ -28,7 +28,7 @@ jobs:
       - name: Setup Nix
         uses: cachix/install-nix-action@v31
       - name: Plan infra
-        if: github.ref_main != 'main'
+        if: github.ref_name != 'main'
         run: nix develop --command "deploy/scripts/plan.sh"
       - name: Deploy infra
         if: github.ref_name == 'main'
