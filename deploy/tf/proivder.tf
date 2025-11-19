@@ -1,18 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "6.20.0"
-    }
-  }
-
-  backend "s3" {
-    encrypt = true
-  }
-
-  required_version = ">= 1.0.0"
-}
-
 provider "aws" {
   region = "ap-southeast-2"
   default_tags {
