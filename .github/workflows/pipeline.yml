@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: Git clone the repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v5
         with:
