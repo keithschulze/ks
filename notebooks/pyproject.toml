@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "jupyterlab>=4.4.10",
+    "nbconvert>=7.17.0"
 ]
