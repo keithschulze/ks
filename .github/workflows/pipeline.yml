@@ -20,7 +20,7 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v6
       - name: Configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::801592206232:role/ks-shared-dev-ga-ks
           role-session-name: deploy-ks
