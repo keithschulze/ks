@@ -57,10 +57,6 @@ name = "blog"
 url = "@/blog/_index.md"
 
 [[extra.main_menu]]
-name = "tags"
-url = "/tags"
-
-[[extra.main_menu]]
 name = "github"
 url = "https://github.com/keithschulze"
 
