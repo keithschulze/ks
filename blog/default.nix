@@ -3,7 +3,8 @@ stdenv.mkDerivation {
   pname = "keithschulze";
   version = "0.0.1";
   src = ./.;
-  buildInputs = [ pkgs.zola ];
+  nativeBuildInputs = [ pkgs.zola pkgs.cacert ];
+  SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   buildPhase = ''
     zola build
   '';
