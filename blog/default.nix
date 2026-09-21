@@ -1,5 +1,5 @@
 { pkgs, stdenv, ... }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "keithschulze";
   version = "0.0.1";
   src = ./.;

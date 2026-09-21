@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          submodules: true
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -35,7 +38,7 @@ jobs:
         run: nix develop --command "deploy/scripts/deploy.sh"
       - name: Build blog
         if: github.ref_name == 'main'
-        run: nix build
+        run: nix build '.?submodules=1'
       - name: Upload content
         if: github.ref_name == 'main'
         run: nix develop --command "deploy/scripts/upload.sh"
