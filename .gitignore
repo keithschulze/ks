@@ -3,7 +3,6 @@ public/
 
 ### direnv ###
 .direnv
-.envrc
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

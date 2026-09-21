@@ -5,6 +5,15 @@ provider "registry.opentofu.org/hashicorp/archive" {
   version = "2.7.1"
   hashes = [
     "h1:/Y6fLmEGMtbcAFi3ALu5tAwEIfUc8vGZRErNjMIfi2U=",
+    "h1:0xjcyFzd5XoXalIuCK7VM8fzJP/DIyhvaQvPDTcs/64=",
+    "h1:C0tsbylWg7ppq/rbFl0+xQQVVO96Sav9H5qRPB4MI70=",
+    "h1:HCKUMrStmDK01YqZ27Ub4f9ZpdDsECBxt7zha3ND/SU=",
+    "h1:PMde1GnA48ocNlv8MMXiBNg+HZvJfhDUNbtKO3tzKO0=",
+    "h1:RCRbnwtCorjaBJUWXRUgNb8YFTcWuyGiH2uQVjO4f5s=",
+    "h1:e12gTxhM2qRQHWk+5jNZfBnnFqpzDOZTCL2vnvykMAo=",
+    "h1:hzAw9IeXx5KcAq5YmIomSUeRKO8AKa7aUVyajUMZOiA=",
+    "h1:nktacFm78d9PeaacuR5XmbNIIq8aBx72HJBQwMSMtlE=",
+    "h1:sQrOJIawX8VeHjXi9yOj8yTG6MWmDueNiOEwtug+plw=",
     "zh:4f8fe5f92125fc7be91379dbde004aaf676fbb523082af167d0a57ac723836bc",
     "zh:4fba9a08c254fd3c17464c1e13398e4927b1d3e22bfdc3bb66c4e5bd9573ada4",
     "zh:65e9945c1e89333b01ef25c15518e125817268f9ecddc3f9d5337dc120d342ee",
@@ -20,9 +29,23 @@ provider "registry.opentofu.org/hashicorp/archive" {
 
 provider "registry.opentofu.org/hashicorp/aws" {
   version     = "6.64.0"
-  constraints = "6.53.0"
+  constraints = "6.64.0"
   hashes = [
+    "h1:/G38+XhC1mBVkmeWdtk/wk7lX2BxviJ2XZ70dpoaKKQ=",
+    "h1:7BzHdGCBG5usqOIhfBq89dkdUopnSo+qe9qRCKDSRHc=",
     "h1:8AgY9Hc5/R5j97WgCcDSlbuKk0pjk3vkp7oz4mtGVY8=",
+    "h1:DKdOy/0RfYLxpzAXBPWTO5Eusvqx5UoGxiq2J0E6DY4=",
+    "h1:KSwetpR4S2eUsKmHftt73Cbx72lPWYET4V+Ej05rnkI=",
+    "h1:MEi5Ecge1Uwx/DRGfdVDzV5Q/soRxKh6dBHxUjGdaDQ=",
+    "h1:VqjWicgPZW32+YnSe0Lo78qq8/24I8XNV+E9d/lBz/4=",
+    "h1:WBgbFHdg/3ekWoAH6UeKiwfk6iqLr1f7TX9R/mJUK8M=",
+    "h1:YisB3zMV5Kh6p5/eVuPAAPEmudD/UqGN4C/V3zRtAq4=",
+    "h1:bG5dXqR4mSlcebUG+anerOWYDyeaScZJeLSJk0cYBfE=",
+    "h1:iosW/imG2pc4La7qdeM/rK6ldMXhcU6YVW7tjqwNXtI=",
+    "h1:nKE1gnLZxIoqukQ1YI9EUdmrQIUeAN4PWb5ecN8U9K8=",
+    "h1:x0hJO5+On8FaKExr4p2cNJhWsNWFZq1EiDD6CfVwy2E=",
+    "h1:yPH75sRH+f3aJlJAloOL/BikeZV6/0GP8VQvnJoMRKM=",
+    "h1:zCWB5ZD98/ZC0a50HTGoC/fTAseh189xxCFEL5Mt7r4=",
     "zh:06e09ced9480ae12578122f7a25758a15d8fe684da0f6a0a61b9bc2f4a4918ad",
     "zh:2035805f0ed8bf81d493e7a52f22965b3d5d402687a95d1caa8c4b1b348c1264",
     "zh:25fe72a3d6a330eab6c8957f9e6bdf297ffdce95fa059fef30b80da764bee6b2",

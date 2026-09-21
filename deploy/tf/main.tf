@@ -115,6 +115,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
       lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.ks_com.id
     viewer_protocol_policy = "allow-all"
     min_ttl                = 0
     default_ttl            = 3600
@@ -189,6 +190,26 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
     acm_certificate_arn      = var.acm_certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
+  }
+}
+
+resource "aws_cloudfront_response_headers_policy" "ks_com" {
+  name    = "${local.name_prefix}-response-headers-policy"
+  comment = "Specify the HTTP headers that Amazon CloudFront adds or removes in HTTP responses"
+
+  custom_headers_config {
+    items {
+      header = "Permissions-Policy"
+      override = true
+      value = "interest-cohort=(), accelerometer=(), ambient-light-sensor=(), battery=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), publickey-credentials-create=(), publickey-credentials-get=(), serial=(), storage-access=(), sync-xhr=(), usb=(), web-share=(), window-management=(), xr-spatial-tracking=()"
+    }
+  }
+
+  security_headers_config {
+    content_security_policy {
+      content_security_policy = "default-src 'self'; img-src 'self' https://mybinder.org https://static.mybinder.org; object-src 'none'; script-src 'self'; style-src 'self' 'sha256-PKsAyc2CAbvt1axikIx7gOr3bSn047az3mVPNOp94EA='; style-src-attr 'unsafe-inline'"
+      override = true
+    }
   }
 }
 

@@ -1,3 +1,6 @@
 [submodule "themes/zola-paper"]
 	path = themes/zola-paper
 	url = https://github.com/schoenenberg/zola-paper.git
+[submodule "blog/themes/zola-bearblog"]
+	path = blog/themes/zola-bearblog
+	url = https://codeberg.org/alinnow/zola-bearblog
