@@ -1,6 +1,10 @@
 version: 2
 enable-beta-ecosystems: true
 updates:
+  - package-ecosystem: "nix"
+    directory: "/"
+    schedule:
+      interval: "weekly"
   - package-ecosystem: "uv"
     directory: "/notebooks"
     schedule:

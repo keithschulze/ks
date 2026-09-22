@@ -4,11 +4,12 @@ set -euo pipefail
 
 script_dir=$(dirname "$0")
 
+# shellcheck source=/dev/null
 source "$script_dir/tofu.sh"
 
 tf_plan_output_dir=$(mktemp -d)
 tf_plan_path="$tf_plan_output_dir/out.tfplan"
-trap "rm -R ${tf_plan_output_dir}" EXIT
+trap 'rm -R "${tf_plan_output_dir}"' EXIT
 
 pushd "$script_dir/../tf"
 
