@@ -143,6 +143,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
       lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.ks_com.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -170,6 +171,7 @@ resource "aws_cloudfront_distribution" "ks_cf_distribution" {
       lambda_arn = aws_lambda_function.pretty_url_lambda.qualified_arn
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.ks_com.id
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
