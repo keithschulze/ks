@@ -212,6 +212,15 @@ resource "aws_cloudfront_response_headers_policy" "ks_com" {
       content_security_policy = "default-src 'self'; img-src 'self' https://mybinder.org https://static.mybinder.org; object-src 'none'; script-src 'self'; style-src 'self' 'sha256-PKsAyc2CAbvt1axikIx7gOr3bSn047az3mVPNOp94EA='; style-src-attr 'unsafe-inline'"
       override = true
     }
+
+    content_type_options {
+      override = true
+    }
+
+    frame_options {
+      frame_option = "DENY"
+      override = true
+    }
   }
 }
 
