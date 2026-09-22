@@ -1,4 +1,5 @@
 title = "keithschulze"
+description = "Personal site of Keith Schulze with content about projects and interests including: computer vision, image processing, functional programming and data engineering."
 
 # The URL the site will be built for
 base_url = "https://keithschulze.com"
