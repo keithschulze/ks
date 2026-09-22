@@ -221,6 +221,12 @@ resource "aws_cloudfront_response_headers_policy" "ks_com" {
       frame_option = "DENY"
       override = true
     }
+
+    strict_transport_security {
+      access_control_max_age_sec = 63072000
+      include_subdomains = true
+      override = true
+    }
   }
 }
 
