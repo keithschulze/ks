@@ -39,7 +39,6 @@
       });
 
       format = pkgs.writeScriptBin "format" ''
-        export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
         ${pkgs.shfmt}/bin/shfmt -w -d -s -i 2 -ci ./deploy/scripts
         ${pkgs.shellcheck}/bin/shellcheck -x ./deploy/scripts/*
         ${pkgs.alejandra}/bin/alejandra -e ./blog/themes .
@@ -49,8 +48,9 @@
       fmt-check =
         pkgs.runCommandLocal "fmt-check" {
           src = ./.;
-          nativeBuildInputs = with pkgs; [alejandra shellcheck shfmt zola];
+          nativeBuildInputs = with pkgs; [alejandra cacert shellcheck shfmt zola];
         } ''
+          export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
           shfmt -d -s -i 2 -ci ${./deploy/scripts}
           shellcheck -x ${./deploy/scripts}/*
           alejandra -c -e ${./blog/themes} .
