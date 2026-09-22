@@ -39,6 +39,7 @@
       });
 
       format = pkgs.writeScriptBin "format" ''
+        export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
         ${pkgs.shfmt}/bin/shfmt -w -d -s -i 2 -ci ./deploy/scripts
         ${pkgs.shellcheck}/bin/shellcheck -x ./deploy/scripts/*
         ${pkgs.alejandra}/bin/alejandra -e ./blog/themes .
