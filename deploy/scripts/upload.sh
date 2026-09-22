@@ -4,6 +4,7 @@ set -euo pipefail
 
 script_dir=$(dirname "$0")
 
+# shellcheck source=/dev/null
 source "$script_dir/tofu.sh"
 
 pushd "$script_dir/../tf"

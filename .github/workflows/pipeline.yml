@@ -1,4 +1,4 @@
-name: keithschulze.com infra deploy
+name: keithschulze.com deployment
 
 on:
   pull_request:
@@ -14,8 +14,21 @@ permissions:
   contents: read    # This is required for actions/checkout@v2
 
 jobs:
+  check:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v31
+      - name: Check
+        run: nix flake check "git+file://$(pwd)?submodules=1"
   deploy:
     runs-on: ubuntu-slim
+    needs: check
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v7

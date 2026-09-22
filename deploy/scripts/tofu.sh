@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2154
 
 fn_get_tf_state_bucket() (
   aws ssm get-parameter \
@@ -15,7 +16,6 @@ fn_get_tf_state_lock_table() (
 )
 
 tofu_init() (
-
   echo "Region: $AWS_REGION"
   echo "State Bucket: $(fn_get_tf_state_bucket)"
   echo "State Lock Table: $(fn_get_tf_state_lock_table)"
@@ -33,8 +33,8 @@ tofu_init() (
 )
 
 if [[ ${BASH_SOURCE[0]} != "$0" ]]; then
-    export -f tofu_init
+  export -f tofu_init
 else
-    tofu_init "${@}"
-    exit $?
+  tofu_init "${@}"
+  exit $?
 fi
