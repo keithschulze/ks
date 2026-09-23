@@ -3,8 +3,7 @@ name = "ks"
 version = "0.1.0"
 description = "Notebooks for my blog"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.13"
 dependencies = [
-    "jupyterlab>=4.5.10",
-    "nbconvert>=7.17.1"
+    "jupyterlab>=4.6"
 ]
