@@ -8,6 +8,11 @@ variable "deploy_env" {
   description = "Deployment environment"
 }
 
+variable "bucket_name" {
+  type = string
+  description = "Name of the S3 bucket to host the site"
+}
+
 variable "region" {
   type        = string
   description = "Deployment region"

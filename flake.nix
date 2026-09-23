@@ -29,6 +29,7 @@
       appName = "ks";
       deployEnv = "dev";
       awsRegion = "ap-southeast-2";
+      bucketName = "${appName}-${deployEnv}.com";
 
       tfStateBucketSSMPath = "/ks-shared/tf/s3-state-bucket";
       tfStateLockSSMPath = "/ks-shared/tf/dynamodb-state-lock-table";
@@ -70,7 +71,6 @@
           jq
           zola
           format
-          alejandra
 
           # keep this line if you use bash
           bashInteractive
@@ -80,12 +80,14 @@
         AWS_DEFAULT_REGION = awsRegion;
         APP_NAME = appName;
         DEPLOY_ENV = deployEnv;
+        BUCKET_NAME = bucketName;
         TF_STATE_BUCKET_SSM_PATH = tfStateBucketSSMPath;
         TF_STATE_LOCK_TABLE_SSM_PATH = tfStateLockSSMPath;
         TF_WORKSPACE_KEY_PREFIX = tfWorkspacePrefix;
         TF_VAR_app_name = appName;
         TF_VAR_deploy_env = deployEnv;
         TF_VAR_region = awsRegion;
+        TF_VAR_bucket_name = bucketName;
       };
     });
 }

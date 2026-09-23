@@ -11,7 +11,7 @@ data "archive_file" "pretty_url_lambda_code" {
 }
 
 resource "aws_s3_bucket" "ks" {
-  bucket = "${local.name_prefix}.com"
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_acl" "ks_acl" {
