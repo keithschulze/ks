@@ -39,7 +39,7 @@
         buildCommand = "${old.buildCommand}\n patchShebangs $out";
       });
 
-      format = pkgs.writeScriptBin "format" ''
+      format = pkgs.writeShellScriptBin "format" ''
         ${pkgs.shfmt}/bin/shfmt -w -d -s -i 2 -ci ./deploy/scripts
         ${pkgs.shellcheck}/bin/shellcheck -x ./deploy/scripts/*
         ${pkgs.alejandra}/bin/alejandra -e ./blog/themes .
@@ -58,8 +58,15 @@
           zola -r ${./blog} check
           mkdir -p $out
         '';
+      
+      serve = pkgs.writeShellScriptBin "serve" ''
+        ${pkgs.zola}/bin/zola -r blog serve $@
+      ''; 
     in {
-      packages.default = pkgs.blog;
+      packages = {
+        default = pkgs.blog;
+        serve = serve;
+      };
 
       checks = {inherit fmt-check;};
 
