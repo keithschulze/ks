@@ -5,5 +5,5 @@ description = "Notebooks for my blog"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "jupyterlab>=4.6"
+    "jupyterlab>=4.6.5"
 ]
