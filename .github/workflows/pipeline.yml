@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Setup Nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Check
         run: nix flake check "git+file://$(pwd)?submodules=1"
   deploy:
@@ -42,7 +42,7 @@ jobs:
           role-session-name: deploy-ks
           aws-region: ${{ env.AWS_REGION }}
       - name: Setup Nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Plan infra
         if: github.ref_name != 'main'
         run: nix develop --command "deploy/scripts/plan.sh"
